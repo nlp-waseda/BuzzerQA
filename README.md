@@ -36,3 +36,4 @@ BuzzerQA-hardは1,388問、BuzzerQA-easyは1,033問からなります。
 ```
 
 # ライセンス
+本データセットは [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)の下で公開されています。
