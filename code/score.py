@@ -21,7 +21,7 @@ def return_prompts(question_block):
 """
     return prompts
 
-def evaluate_quizzes(quizzes):
+def score_quizzes(quizzes):
     correct_count = 0
     incorrect_count = 0
 
@@ -73,4 +73,4 @@ def load_quizzes(file_path):
 
 if __name__ == "__main__":
     quizzes = load_quizzes(quiz_file)
-    evaluate_quizzes(quizzes)
+    score_quizzes(quizzes)
