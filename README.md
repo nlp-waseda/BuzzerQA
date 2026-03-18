@@ -8,7 +8,7 @@ BuzzerQA-hardは1,388問、BuzzerQA-easyは1,033問からなります。
 
 また、BuzzerQA-easyよりも更に難易度が低い問題はベンチマークには含まれませんが、参考のためBuzzerQA-rejectedとして公開しています。
 
-# フォーマット
+# 問題フォーマット
 問題ファイルはjsonオブジェクトの配列の形式を取ります。
 各オブジェクトには"question", "answer", "a-id"の3つのkeyがあります。
 "question"は問題文、"answer"は解答です。
@@ -22,6 +22,14 @@ BuzzerQA-hardは1,388問、BuzzerQA-easyは1,033問からなります。
 "a-id": "prod-1740"
 }
 ```
+
+# 解答と評価
+##解答
+"question"に対する解答を"answer_llm"として、問題ファイルに保存してください。
+Qwen3-32Bを使用する場合のサンプルファイルがanswer_sample.pyとしてあります。
+##評価
+"answer"と"answer_llm"が問題に対する解答として同一であるかをLLM-as-a-judgeで評価し、正答率をスコアとします。
+score.pyを実行してください。
 
 # リファレンス
 ```
