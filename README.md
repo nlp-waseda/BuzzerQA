@@ -30,8 +30,6 @@ BuzzerQA-hardは1,388問、BuzzerQA-easyは1,033問からなります。
     author = "佐々木斗海 and 河原大輔",
     booktitle = "2026年度人工知能学会全国大会",
     year = "2026",
-    url = "",
-    pages = "",
 }
 ```
 
