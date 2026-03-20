@@ -34,6 +34,30 @@ Qwen3-32Bを使用する場合のサンプルファイルがanswer_sample.pyと�
 
 score.pyを実行してください。
 
+# 評価結果
+
+いくつかのLLMの評価結果を記載します。
+
+|モデル名                                           |hard   | easy   |
+| ------------------------------------------------ | ------ | -------| 
+| GPT-5.2 (reasoning.effort = medium)                               | 0.396     | 0.803 |
+| GPT-5.2 (reasoning.effort = none)                       | 0.229 | 0.712     |
+| GPT-5                        | 0.493     | 0.850     |
+| GPT-5 mini                     | 0.187     | 0.638     |
+| GPT-5 nano  | 0.080     | 0.419     |
+| GPT-4o  | 0.187 | 0.638 |
+| GPT-4o mini  | 0.033 | 0.291 |
+| OpenAI o3  | 0.465 | 0.837 |
+| Claude Opus 4.5  | 0.352 | 0.817 |
+| Claude Sonnet 4.5 | 0.240 | 0.702 |
+| Gemini 3 Pro | **0.699** | **0.910** |
+| Gemini 3 Flash | 0.586 | 0.882 |
+| Qwen3-8B (thinking mode) | 0.022 | 0.145 |
+| Qwen3-8B (non-thinking mode) | 0.011 | 0.083 |
+| Qwen3-32B (non-thinking mode)  | 0.019 | 0.145 |
+| llm-jp-3.1-8x13b-instruct4  | 0.084 | 0.466 |
+| Llama 3.3 Swallow 70B Instruct v0.4 | 0.102 | 0.512 |
+
 # リファレンス
 ```
 {sasaki-jsai2026,
