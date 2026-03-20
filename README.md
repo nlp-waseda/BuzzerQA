@@ -30,7 +30,7 @@ BuzzerQA-hardは1,388問、BuzzerQA-easyは1,033問からなります。
 Qwen3-32Bを使用する場合のサンプルファイルがanswer_sample.pyとしてあります。
 
 ## 評価
-"answer"と"answer_llm"が問題に対する解答として同一であるかをLLM-as-a-judgeで評価し、正答率をスコアとします。
+"answer"と"answer_llm"が問題に対する解答として同一であるかをLLM-as-a-judgeで評価し、正答率をスコアとします。デフォルトではLLMとしてQwen3-32Bを用いています。
 
 score.pyを実行してください。
 
