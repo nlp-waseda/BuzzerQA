@@ -5,8 +5,8 @@ import os
 import re
 
 model_name = "Qwen/Qwen3-32B"
-quiz_file="../BuzzerQA/BuzzerQA-easy.json"
-output_file="../BuzzerQA/BuzzerQA-easy-answer_llm.json"
+quiz_file="../BuzzerQA/BuzzerQA-easy-v1.1.json"
+output_file="../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json"
 
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
