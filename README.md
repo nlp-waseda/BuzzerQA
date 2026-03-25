@@ -45,23 +45,23 @@ v1.1を用いたいくつかのLLMの評価結果を記載します。
 
 |モデル名                                           |hard   | easy   |
 | ------------------------------------------------ | ------ | -------| 
-| GPT-5.2 (reasoning.effort = medium)                               | 0.396     | 0.803 |
-| GPT-5.2 (reasoning.effort = none)                       | 0.229 | 0.712     |
-| GPT-5                        | 0.493     | 0.850     |
-| GPT-5 mini                     | 0.187     | 0.638     |
-| GPT-5 nano  | 0.080     | 0.419     |
-| GPT-4o  | 0.187 | 0.638 |
-| GPT-4o mini  | 0.033 | 0.291 |
-| OpenAI o3  | 0.465 | 0.837 |
-| Claude Opus 4.5  | 0.352 | 0.817 |
-| Claude Sonnet 4.5 | 0.240 | 0.702 |
-| Gemini 3 Pro | **0.699** | **0.910** |
-| Gemini 3 Flash | 0.586 | 0.882 |
-| Qwen3-8B (thinking mode) | 0.022 | 0.145 |
-| Qwen3-8B (non-thinking mode) | 0.011 | 0.083 |
-| Qwen3-32B (non-thinking mode)  | 0.019 | 0.145 |
-| llm-jp-3.1-8x13b-instruct4  | 0.084 | 0.466 |
-| Llama 3.3 Swallow 70B Instruct v0.4 | 0.102 | 0.512 |
+| GPT-5.2 (reasoning.effort = medium)                               | 0.394     | 0.813 |
+| GPT-5.2 (reasoning.effort = none)                       | 0.231 | 0.713     |
+| GPT-5                        | 0.495     | 0.853     |
+| GPT-5 mini                     | 0.195     | 0.653     |
+| GPT-5 nano  | 0.079     | 0.413     |
+| GPT-4o  | 0.191 | 0.649 |
+| GPT-4o mini  | 0.031 | 0.281 |
+| OpenAI o3  | 0.465 | 0.841 |
+| Claude Opus 4.5  | 0.355 | 0.817 |
+| Claude Sonnet 4.5 | 0.242 | 0.702 |
+| Gemini 3 Pro | **0.704** | **0.911** |
+| Gemini 3 Flash | 0.591 | 0.889 |
+| Qwen3-8B (thinking mode) | 0.017 | 0.137 |
+| Qwen3-8B (non-thinking mode) | 0.010 | 0.069 |
+| Qwen3-32B (non-thinking mode)  | 0.016 | 0.136 |
+| llm-jp-3.1-8x13b-instruct4  | 0.088 | 0.463 |
+| Llama 3.3 Swallow 70B Instruct v0.4 | 0.095 | 0.517 |
 
 # リファレンス
 ```
