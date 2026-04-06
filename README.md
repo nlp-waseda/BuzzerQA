@@ -4,7 +4,7 @@ BuzzerQAは日本語の短文質問応答形式のベンチマークです。大
 各問題はWikipedia記事を元に、LLMを用いた多段階処理によって作成しました。
 問題の難易度によって2つに分かれており、より難しいBuzzerQA-hardは高性能モデル向け、より易しいBuzzerQA-easyは小型モデル向けとなっています。
 また、BuzzerQA-easyよりも更に難易度が低い問題はベンチマークには含まれませんが、参考のためBuzzerQA-rejectedとして公開しています。
-記事の要約および作問にはQwen3-32B (thinking mode)を、難易度の推定にはCALM3-22B-Chat, Gemma 3 27B IT, lm-jp-3.1-13b-instruct4, Phi-4, Qwen3-32B (thinking mode)を用いました。
+記事の要約および作問にはQwen3-32B (thinking mode)を、難易度の推定にはCALM3-22B-Chat, Gemma 3 27B IT, llm-jp-3.1-13b-instruct4, Phi-4, Qwen3-32B (thinking mode)を用いました。
 
 # 変更履歴
 ## v1.1
