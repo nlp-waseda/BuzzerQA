@@ -6,24 +6,24 @@ import re
 import argparse
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="LLMで回答の正誤判定を行うスクリプト")
+    parser = argparse.ArgumentParser(description="LLMで解答と模範解答の一致判定")
     parser.add_argument(
         "--model_name",
         type=str,
         default="Qwen/Qwen3-32B",
-        help="使用するモデル名 (default: Qwen/Qwen3-32B)"
+        help="使用するモデル名"
     )
     parser.add_argument(
         "--quiz_file",
         type=str,
         default="../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json",
-        help="入力JSONファイル"
+        help="解答データのパス"
     )
     parser.add_argument(
         "--output_file",
         type=str,
         default=None,
-        help="出力JSONファイル（未指定なら自動生成）"
+        help="出力(採点データ)のパス"
     )
     return parser.parse_args()
 
