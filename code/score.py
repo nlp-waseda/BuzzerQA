@@ -14,7 +14,7 @@ def parse_args():
         help="模範解答との一致判定に用いるLLMのHugging Faceにおけるモデル名"
     )
     parser.add_argument(
-        "--quiz_file",
+        "--answer_file",
         type=str,
         default="../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json",
         help="解答データのパス"
@@ -91,10 +91,10 @@ def make_default_output_path(input_path):
 if __name__ == "__main__":
     args = parse_args()
 
-    output_file = args.output_file if args.output_file else make_default_output_path(args.quiz_file)
+    output_file = args.output_file if args.output_file else make_default_output_path(args.answer_file)
 
     print("model_name:", args.model_name)
-    print("quiz_file:", args.quiz_file)
+    print("answer_file:", args.answer_file)
     print("output_file:", output_file)
 
     model = AutoModelForCausalLM.from_pretrained(
@@ -104,5 +104,5 @@ if __name__ == "__main__":
     )
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
-    quizzes = load_quizzes(args.quiz_file)
+    quizzes = load_quizzes(args.answer_file)
     score_quizzes(quizzes, model, tokenizer, output_file)
