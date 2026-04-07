@@ -32,15 +32,18 @@ BuzzerQAはクイズを題材にした日本語の短文質問応答形式のベ
 
 # 解答と評価
 ## 解答
-"question"に対する解答を"answer_llm"というkeyとして問題ファイルに追記し、保存してください。
+"question"に対する解答を"answer_llm"というkeyとして問題ファイルに追記してください。
 
-Qwen3-32Bを使用して解答する場合のサンプルコードが`code/answer_sample.py`です。適宜引数を変更してください。
+Qwen3-32Bを使用して解答する場合のサンプルコードが`code/answer_sample.py`です。
 ```
-model_name = "Qwen/Qwen3-32B"    # 解答に用いるLLMのHugging Faceにおけるモデル名
-quiz_file="../BuzzerQA/BuzzerQA-easy-v1.1.json"    # 問題データのパス
-output_file="../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json"    # 出力先のパス
+python answer_sample.py \
+  --model_name Qwen/Qwen3-32B \
+  --quiz_file ../BuzzerQA/BuzzerQA-easy-v1.1.json \
+  --output_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json
 ```
-
+- **`--model_name`**: 使用するLLM
+- **`--quiz_file`**: 入力ファイル
+- **`--output_file`**: 出力ファイル
 
 ## 評価
 "answer"と"answer_llm"が問題に対する解答として同一であるかをLLM-as-a-judgeで評価し、正答率をスコアとします。デフォルトではLLMとしてQwen3-32Bを用いています。
