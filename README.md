@@ -48,7 +48,7 @@ python answer_sample.py \
 ## 評価
 "answer"と"answer_llm"が問題に対する解答として同一であるかをLLM-as-a-judgeで評価し、正答率をスコアとします。デフォルトではLLMとしてQwen3-32Bを用いています。
 
-`code/score.py`を実行してください。適宜引数を変更してください。
+`code/score.py`を実行してください。
 ```
 python score.py \
   --model_name Qwen/Qwen3-32B \
