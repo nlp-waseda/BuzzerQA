@@ -11,7 +11,7 @@ def parse_args():
         "--model_name",
         type=str,
         default="Qwen/Qwen3-32B",
-        help="使用するモデル名"
+        help="模範解答との一致判定に用いるLLMのHugging Faceにおけるモデル名"
     )
     parser.add_argument(
         "--quiz_file",
