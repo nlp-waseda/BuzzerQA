@@ -6,7 +6,7 @@ import re
 import argparse
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="LLMでクイズに解答する")
+    parser = argparse.ArgumentParser(description="LLMでクイズに解答")
     parser.add_argument(
         "--model_name",
         type=str,
