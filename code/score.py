@@ -3,16 +3,29 @@ import gzip
 import json
 import os
 import re
+import argparse
 
-model_name = "Qwen/Qwen3-32B"
-quiz_file="../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json"
-
-model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    torch_dtype="auto",
-    device_map="auto"
-)
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+def parse_args():
+    parser = argparse.ArgumentParser(description="LLMで回答の正誤判定を行うスクリプト")
+    parser.add_argument(
+        "--model_name",
+        type=str,
+        default="Qwen/Qwen3-32B",
+        help="使用するモデル名 (default: Qwen/Qwen3-32B)"
+    )
+    parser.add_argument(
+        "--quiz_file",
+        type=str,
+        default="../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json",
+        help="入力JSONファイル"
+    )
+    parser.add_argument(
+        "--output_file",
+        type=str,
+        default=None,
+        help="出力JSONファイル（未指定なら自動生成）"
+    )
+    return parser.parse_args()
 
 def return_prompts(question_block):
     prompts = f"""模範解答とLLMの解答が一致しているかを判定してください。一致している場合は"correct"、異なる場合は"incorrect"と答えてください。それ以外の返答は行わないでください。
@@ -21,7 +34,7 @@ def return_prompts(question_block):
 """
     return prompts
 
-def score_quizzes(quizzes):
+def score_quizzes(quizzes, model, tokenizer, output_file):
     correct_count = 0
     incorrect_count = 0
 
@@ -39,7 +52,7 @@ def score_quizzes(quizzes):
         )
         model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
-        generated_ids = model.generate(**model_inputs, max_new_tokens=32768,top_k=1)
+        generated_ids = model.generate(**model_inputs, max_new_tokens=32768, top_k=1)
         output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist()
 
         try:
@@ -64,13 +77,32 @@ def score_quizzes(quizzes):
     print(f"incorrect: {incorrect_count}")
     print(f"score: {score:.4f}")
 
-    with open(quiz_file, "w", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump(quizzes, f, ensure_ascii=False, indent=2)
 
 def load_quizzes(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def make_default_output_path(input_path):
+    base, ext = os.path.splitext(input_path)
+    return f"{base}_scored{ext}"
+
 if __name__ == "__main__":
-    quizzes = load_quizzes(quiz_file)
-    score_quizzes(quizzes)
+    args = parse_args()
+
+    output_file = args.output_file if args.output_file else make_default_output_path(args.quiz_file)
+
+    print("model_name:", args.model_name)
+    print("quiz_file:", args.quiz_file)
+    print("output_file:", output_file)
+
+    model = AutoModelForCausalLM.from_pretrained(
+        args.model_name,
+        torch_dtype="auto",
+        device_map="auto"
+    )
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+
+    quizzes = load_quizzes(args.quiz_file)
+    score_quizzes(quizzes, model, tokenizer, output_file)
