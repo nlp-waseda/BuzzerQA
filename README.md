@@ -55,7 +55,7 @@ python score.py \
   --answer_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json \
   --output_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm-scored.json
 ```
-- `--model_name`: 解答に用いるLLMのHugging Faceにおけるモデル名
+- `--model_name`: 模範解答との一致判定に用いるLLMのHugging Faceにおけるモデル名
 - `--answer_file`: 解答データのパス
 - `--output_file`: 出力(採点データ)のパス
 
