@@ -22,8 +22,8 @@ def parse_args():
     parser.add_argument(
         "--output_file",
         type=str,
-        default="../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json",
-        help="出力先のパス"
+        default=None,
+        help="出力(解答データ)のパス"
     )
     return parser.parse_args()
 
@@ -75,12 +75,18 @@ def load_quizzes(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def make_default_output_path(input_path):
+    base, ext = os.path.splitext(input_path)
+    return f"{base}-answer_llm{ext}"
+
 if __name__ == "__main__":
     args = parse_args()
 
+    output_file = args.output_file if args.output_file else make_default_output_path(args.quiz_file)
+
     print("model_name:", args.model_name)
     print("quiz_file:", args.quiz_file)
-    print("output_file:", args.output_file)
+    print("output_file:", output_file)
 
     model = AutoModelForCausalLM.from_pretrained(
         args.model_name,
@@ -90,4 +96,4 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     quizzes = load_quizzes(args.quiz_file)
-    answer_quizzes(quizzes, args.output_file, model, tokenizer)
+    answer_quizzes(quizzes, output_file, model, tokenizer)
