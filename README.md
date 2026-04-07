@@ -32,7 +32,7 @@ BuzzerQAは人間向けクイズを模した日本語の短文質問応答形式
 
 # 解答と評価
 ## 解答
-"question"に対する解答を"answer_llm"というkeyとして問題ファイルに追記してください。
+"question"に対する解答を"answer_llm"というkeyとして問題ファイルに追加してください。
 
 Qwen3-32Bを使用して解答する場合のサンプルコードが`code/answer_sample.py`です。
 ```
