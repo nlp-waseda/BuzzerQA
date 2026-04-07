@@ -41,18 +41,23 @@ python answer_sample.py \
   --quiz_file ../BuzzerQA/BuzzerQA-easy-v1.1.json \
   --output_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json
 ```
-- **`--model_name`**: 使用するLLM
-- **`--quiz_file`**: 入力ファイル
-- **`--output_file`**: 出力ファイル
+- `--model_name`: 解答に用いるLLMのHugging Faceにおけるモデル名
+- `--quiz_file`: 問題データのパス
+- `--output_file`: 出力(解答データ)のパス
 
 ## 評価
 "answer"と"answer_llm"が問題に対する解答として同一であるかをLLM-as-a-judgeで評価し、正答率をスコアとします。デフォルトではLLMとしてQwen3-32Bを用いています。
 
 `code/score.py`を実行してください。適宜引数を変更してください。
 ```
-model_name = "Qwen/Qwen3-32B"    # 解答の一致判定に用いるLLMのHugging Faceにおけるモデル名
-quiz_file="../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json" # LLMの解答を含む問題データ(解答の出力ファイル)のパス
+python score.py \
+  --model_name Qwen/Qwen3-32B \
+  --answer_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json \
+  --output_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm-scored.json
 ```
+- `--model_name`: 解答に用いるLLMのHugging Faceにおけるモデル名
+- `--answer_file`: 解答データのパス
+- `--output_file`: 出力(採点データ)のパス
 
 # 評価結果
 
