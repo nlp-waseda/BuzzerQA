@@ -7,6 +7,10 @@ BuzzerQAは人間向けクイズを模した日本語の短文質問応答形式
 記事の要約および作問にはQwen3-32B (thinking mode)を、難易度の推定にはCALM3-22B-Chat, Gemma 3 27B IT, llm-jp-3.1-13b-instruct4, Phi-4, Qwen3-32B (thinking mode)を用いました。
 
 # 変更履歴
+## v1.2
+不適当な問題を削除しました。内容が変更された問題はありません。
+この結果、BuzzerQA-hardは1,330問、BuzzerQA-easyは964問となりました。
+
 ## v1.1
 不適当な問題の削除やより公平な条件での難易度推定を行い、再分類しました。内容が変更された問題はありません。
 この結果、BuzzerQA-hardは1,370問、BuzzerQA-easyは966問となりました。
@@ -38,8 +42,8 @@ Qwen3-32Bを使用して解答する場合のサンプルコードが`code/answe
 ```
 python answer_sample.py \
   --model_name Qwen/Qwen3-32B \
-  --quiz_file ../BuzzerQA/BuzzerQA-easy-v1.1.json \
-  --output_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json
+  --quiz_file ../BuzzerQA/BuzzerQA-easy-v1.2.json \
+  --output_file ../BuzzerQA/BuzzerQA-easy-v1.2-answer_llm.json
 ```
 - `--model_name`: 解答に用いるLLMのHugging Faceにおけるモデル名
 - `--quiz_file`: 問題データのパス
@@ -52,8 +56,8 @@ python answer_sample.py \
 ```
 python score.py \
   --model_name Qwen/Qwen3-32B \
-  --answer_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm.json \
-  --output_file ../BuzzerQA/BuzzerQA-easy-v1.1-answer_llm-scored.json
+  --answer_file ../BuzzerQA/BuzzerQA-easy-v1.2-answer_llm.json \
+  --output_file ../BuzzerQA/BuzzerQA-easy-v1.2-answer_llm-scored.json
 ```
 - `--model_name`: 模範解答との一致判定に用いるLLMのHugging Faceにおけるモデル名
 - `--answer_file`: 解答データのパス
@@ -61,27 +65,27 @@ python score.py \
 
 # 評価結果
 
-v1.1を用いたいくつかのLLMの評価結果を記載します。
+v1.2を用いたいくつかのLLMの評価結果を記載します。
 
 |モデル名                                           |hard   | easy   |
 | ------------------------------------------------ | ------ | -------| 
-| GPT-5.2 (reasoning.effort = medium)                               | 0.394     | 0.813 |
-| GPT-5.2 (reasoning.effort = none)                       | 0.231 | 0.713     |
-| GPT-5                        | 0.495     | 0.853     |
-| GPT-5 mini                     | 0.195     | 0.653     |
-| GPT-5 nano  | 0.079     | 0.413     |
-| GPT-4o  | 0.191 | 0.649 |
-| GPT-4o mini  | 0.031 | 0.281 |
-| OpenAI o3  | 0.465 | 0.841 |
-| Claude Opus 4.5  | 0.355 | 0.817 |
-| Claude Sonnet 4.5 | 0.242 | 0.702 |
-| Gemini 3 Pro | **0.704** | **0.911** |
-| Gemini 3 Flash | 0.591 | 0.889 |
-| Qwen3-8B (thinking mode) | 0.017 | 0.137 |
-| Qwen3-8B (non-thinking mode) | 0.010 | 0.069 |
+| GPT-5.2 (reasoning.effort = medium)                               | 0.400     | 0.813 |
+| GPT-5.2 (reasoning.effort = none)                       | 0.235 | 0.713     |
+| GPT-5                        | 0.499     | 0.853     |
+| GPT-5 mini                     | 0.198     | 0.653     |
+| GPT-5 nano  | 0.079     | 0.412     |
+| GPT-4o  | 0.195 | 0.649 |
+| GPT-4o mini  | 0.031 | 0.280 |
+| OpenAI o3  | 0.474 | 0.840 |
+| Claude Opus 4.5  | 0.360 | 0.817 |
+| Claude Sonnet 4.5 | 0.245 | 0.701 |
+| Gemini 3 Pro | **0.717** | **0.911** |
+| Gemini 3 Flash | 0.599 | 0.888 |
+| Qwen3-8B (thinking mode) | 0.017 | 0.138 |
+| Qwen3-8B (non-thinking mode) | 0.010 | 0.070 |
 | Qwen3-32B (non-thinking mode)  | 0.016 | 0.136 |
-| llm-jp-3.1-8x13b-instruct4  | 0.088 | 0.463 |
-| Llama 3.3 Swallow 70B Instruct v0.4 | 0.095 | 0.517 |
+| llm-jp-3.1-8x13b-instruct4  | 0.089 | 0.463 |
+| Llama 3.3 Swallow 70B Instruct v0.4 | 0.096 | 0.517 |
 
 # 参考文献
 ```
